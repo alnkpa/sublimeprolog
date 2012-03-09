@@ -6,28 +6,39 @@
   	  "match": "%.*"
   	},
   	{ "name": "meta.clause.prolog",
-  	  "begin": "^\\s*([a-zA-Z][a-zA-Z0-9_]*\\((?'parameters'(?'number'\\d+)|(?'underscore'_)|(?'list'\\[(\\g'parameters'(,\\g'parameters')*?(\\|\\g'parameters')?)??\\])|(?'atom'[a-z][a-zA-Z0-9_]*)|(?'variable'[A-Z][a-zA-Z0-9_]*)|(?'compound'\\g'atom'\\(\\g'parameters'(,\\g'parameters')*?\\)))(,\\g'parameters')*\\))[\\s^\\n]*(?'hyphendash':-)",
+  	  "begin": "^\\s*([a-zA-Z][a-zA-Z0-9_]*\\(((?'parameters'(?'number'\\d+)|(?'underscore'_)|(?'list'\\[(\\g'parameters'(,\\g'parameters')*?(\\|\\g'parameters')?)??\\])|(?'atom'[a-z][a-zA-Z0-9_]*)|(?'variable'[A-Z][a-zA-Z0-9_]*)|(?'compound'\\g'atom'\\(\\g'parameters'(,\\g'parameters')*?\\)))(,\\g'parameters')*)\\))[\\s^\\n]*(:-)",
   	  "beginCaptures": {
-  	      "1": { "name": "entity.name.function.head.prolog" },
-  	      "hyphendash": { "name": "keyword.control.hyphendash.prolog"},
-  	      "underscore": { "name": "keyword.control.anonymous.prolog"}
+        "1": { "name": "entity.name.function.head.prolog" }
   	  },
   	  "patterns": [
-	  	{ "include": "$self" },
-	  	{  "name": "meta.clause.body.prolog",
-	  	   "match": "."
+      { "include": "$self" },
+	  	{ "name": "meta.clause.body.prolog",
+	  	  "match": "."
 	  	}
   	  ],
-  	  "end": ".*(\\.)",
+  	  "end": "[.^%]*(\\.)",
   	  "endCaptures": {
-  	      "1": { "name": "keyword.control.clauseend.prolog" }
+        "1": { "name": "keyword.control.clauseend.prolog" }
   	  }
   	},
   	{  "name": "entity.name.function.fact.prolog",
   	   "match": "\\s*[a-zA-Z][a-zA-Z0-9_]*\\(.*?\\)[\\s^\\n]*\\."
   	},
-    {  "name": "keyword.control.if.prolog",
-       "match": "->|;"
+    { "name": "meta.if.prolog",
+      "begin": "(->)",
+      "beginCaptures": {
+          "1": { "name": "keyword.flow.if.prolog" }
+      },
+      "patterns": [
+        { "include": "$self" },
+        {  "name": "meta.if.body.prolog",
+           "match": "."
+        }
+      ],
+      "end": "(;)",
+      "endCaptures": {
+          "1": { "name": "keyword.flow.else.prolog" }
+      }
     },
     {  "name": "keyword.control.cut.prolog",
        "match": "!"
