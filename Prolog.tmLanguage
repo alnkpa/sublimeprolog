@@ -11,10 +11,8 @@
 	<key>patterns</key>
 	<array>
 		<dict>
-			<key>match</key>
-			<string>%.*</string>
-			<key>name</key>
-			<string>comment.line.percent-sign.prolog</string>
+			<key>include</key>
+			<string>#clausecontents</string>
 		</dict>
 		<dict>
 			<key>begin</key>
@@ -58,55 +56,6 @@
 			<string>\s*[a-zA-Z][a-zA-Z0-9_]*\(.*?\)[\s^\n]*\.</string>
 			<key>name</key>
 			<string>entity.name.function.fact.prolog</string>
-		</dict>
-		<dict>
-			<key>begin</key>
-			<string>(-&gt;)</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.flow.if.prolog</string>
-				</dict>
-			</dict>
-			<key>end</key>
-			<string>(;)</string>
-			<key>endCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.flow.else.prolog</string>
-				</dict>
-			</dict>
-			<key>name</key>
-			<string>meta.if.prolog</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>include</key>
-					<string>$self</string>
-				</dict>
-				<dict>
-					<key>match</key>
-					<string>.</string>
-					<key>name</key>
-					<string>meta.if.body.prolog</string>
-				</dict>
-			</array>
-		</dict>
-		<dict>
-			<key>match</key>
-			<string>!</string>
-			<key>name</key>
-			<string>keyword.control.cut.prolog</string>
-		</dict>
-		<dict>
-			<key>match</key>
-			<string>(\s(is)\s)|((?&lt;!\w)_)|==|=|\\\+|&gt;|&lt;|\+|\*|\-</string>
-			<key>name</key>
-			<string>keyword.operator.prolog</string>
 		</dict>
 	</array>
 	<key>repository</key>
