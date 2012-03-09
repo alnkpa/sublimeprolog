@@ -11,7 +11,7 @@
         "1": { "name": "entity.name.function.head.prolog" }
   	  },
   	  "patterns": [
-      { "include": "$self" },
+      { "include": "#clausecontents" },
 	  	{ "name": "meta.clause.body.prolog",
 	  	  "match": "."
 	  	}
@@ -47,5 +47,36 @@
        "match": "(\\s(is)\\s)|((?<!\\w)_)|==|=|\\\\\\+|>|<|\\+|\\*|\\-"
     }
   ],
+  "repository": {
+    "clausecontents": {
+    "patterns": [
+    { "name": "comment.line.percent-sign.prolog",
+      "match": "%.*"
+    },
+      { "name": "meta.if.prolog",
+      "begin": "(->)",
+      "beginCaptures": {
+          "1": { "name": "keyword.flow.if.prolog" }
+      },
+      "patterns": [
+        { "include": "$self" },
+        {  "name": "meta.if.body.prolog",
+           "match": "."
+        }
+      ],
+      "end": "(;)",
+      "endCaptures": {
+          "1": { "name": "keyword.flow.else.prolog" }
+      }
+    },
+    {  "name": "keyword.control.cut.prolog",
+       "match": "!"
+    },
+    {  "name": "keyword.operator.prolog",
+       "match": "(\\s(is)\\s)|((?<!\\w)_)|==|=|\\\\\\+|>|<|\\+|\\*|\\-"
+    }
+    ]
+    }
+  },
   "uuid": "df89928b-6612-475a-b414-f319d9b98664"
 }
