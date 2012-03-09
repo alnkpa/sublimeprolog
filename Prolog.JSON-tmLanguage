@@ -37,7 +37,7 @@
         { "name": "meta.if.prolog",
         "begin": "(->)",
         "beginCaptures": {
-            "1": { "name": "keyword.flow.if.prolog" }
+            "1": { "name": "keyword.control.if.prolog" }
         },
         "patterns": [
           { "include": "$self" },
@@ -47,7 +47,7 @@
         ],
         "end": "(;)",
         "endCaptures": {
-            "1": { "name": "keyword.flow.else.prolog" }
+            "1": { "name": "keyword.control.else.prolog" }
         }
         },
         {  "name": "keyword.control.cut.prolog",
@@ -58,6 +58,10 @@
         },
         {  "name": "constant.numeric.integer.prolog",
            "match": "(?<![a-zA-Z]|/)\\d+"
+        },
+        { "name": "string.quoted.prolog",
+          "begin": "\"",
+          "end": "\""
         }
       ]
     }

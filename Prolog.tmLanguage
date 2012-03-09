@@ -88,7 +88,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.flow.if.prolog</string>
+							<string>keyword.control.if.prolog</string>
 						</dict>
 					</dict>
 					<key>end</key>
@@ -98,7 +98,7 @@
 						<key>1</key>
 						<dict>
 							<key>name</key>
-							<string>keyword.flow.else.prolog</string>
+							<string>keyword.control.else.prolog</string>
 						</dict>
 					</dict>
 					<key>name</key>
@@ -134,6 +134,14 @@
 					<string>(?&lt;![a-zA-Z]|/)\d+</string>
 					<key>name</key>
 					<string>constant.numeric.integer.prolog</string>
+				</dict>
+				<dict>
+					<key>begin</key>
+					<string>"</string>
+					<key>end</key>
+					<string>"</string>
+					<key>name</key>
+					<string>string.quoted.prolog</string>
 				</dict>
 			</array>
 		</dict>
