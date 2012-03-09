@@ -22,3 +22,9 @@ If you want to manually install this package, please do:
 	tar -xzvf sublimeprolog.tar.gz
 	cd alnkpa-sublimeprolog-<commit>
 	mv Prolog.tmLanguage ~/.config/sublime-text-2/Packages/User/
+
+## License ##
+
+This Source Code Form is subject to the terms of the Mozilla Public
+License, v. 2.0. If a copy of the MPL was not distributed with this
+file, You can obtain one at <http://mozilla.org/MPL/2.0/>.
