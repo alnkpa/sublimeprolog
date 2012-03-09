@@ -1,15 +1,16 @@
 { "name": "Prolog",
-  "scopeName": "source.prolog", 
+  "scopeName": "source.prolog",
   "fileTypes": ["pl"], 
   "patterns": [
-  	{ "include": "#clausecontents" },
+  	{ "include": "#comments" },
   	{ "name": "meta.clause.prolog",
   	  "begin": "^\\s*([a-zA-Z][a-zA-Z0-9_]*\\(((?'parameters'(?'number'\\d+)|(?'underscore'_)|(?'list'\\[(\\g'parameters'(,\\g'parameters')*?(\\|\\g'parameters')?)??\\])|(?'atom'[a-z][a-zA-Z0-9_]*)|(?'variable'[A-Z][a-zA-Z0-9_]*)|(?'compound'\\g'atom'\\(\\g'parameters'(,\\g'parameters')*?\\)))(,\\g'parameters')*)\\))[\\s^\\n]*(:-)",
   	  "beginCaptures": {
         "1": { "name": "entity.name.function.head.prolog" }
   	  },
   	  "patterns": [
-      { "include": "#clausecontents" },
+      { "include": "#comments" },
+      { "include": "#controlandkeywords" },
 	  	{ "name": "meta.clause.body.prolog",
 	  	  "match": "."
 	  	}
@@ -24,34 +25,41 @@
   	}
   ],
   "repository": {
-    "clausecontents": {
+    "comments": {
     "patterns": [
-    { "name": "comment.line.percent-sign.prolog",
-      "match": "%.*"
-    },
-      { "name": "meta.if.prolog",
-      "begin": "(->)",
-      "beginCaptures": {
-          "1": { "name": "keyword.flow.if.prolog" }
-      },
-      "patterns": [
-        { "include": "$self" },
-        {  "name": "meta.if.body.prolog",
-           "match": "."
-        }
-      ],
-      "end": "(;)",
-      "endCaptures": {
-          "1": { "name": "keyword.flow.else.prolog" }
-      }
-    },
-    {  "name": "keyword.control.cut.prolog",
-       "match": "!"
-    },
-    {  "name": "keyword.operator.prolog",
-       "match": "(\\s(is)\\s)|((?<!\\w)_)|==|=|\\\\\\+|>|<|\\+|\\*|\\-"
+      { "name": "comment.line.percent-sign.prolog",
+        "match": "%.*"
     }
     ]
+    },
+    "controlandkeywords": {
+      "patterns": [
+        { "name": "meta.if.prolog",
+        "begin": "(->)",
+        "beginCaptures": {
+            "1": { "name": "keyword.flow.if.prolog" }
+        },
+        "patterns": [
+          { "include": "$self" },
+          {  "name": "meta.if.body.prolog",
+             "match": "."
+          }
+        ],
+        "end": "(;)",
+        "endCaptures": {
+            "1": { "name": "keyword.flow.else.prolog" }
+        }
+        },
+        {  "name": "keyword.control.cut.prolog",
+           "match": "!"
+        },
+        {  "name": "keyword.operator.prolog",
+           "match": "(\\s(is)\\s)|((?<!\\w)_)|=:=|==|=|\\\\\\+|>|<|\\+|\\*|\\-"
+        },
+        {  "name": "constant.numeric.integer.prolog",
+           "match": "(?<![a-zA-Z]|/)\\d+"
+        }
+      ]
     }
   },
   "uuid": "df89928b-6612-475a-b414-f319d9b98664"
