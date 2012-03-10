@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>comment</key>
+	<string>This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/.</string>
 	<key>fileTypes</key>
 	<array>
 		<string>pl</string>
@@ -16,13 +18,13 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>^\s*([a-zA-Z][a-zA-Z0-9_]*\(((?'parameters'(?'number'\d+)|(?'underscore'_)|(?'list'\[(\g'parameters'(,\g'parameters')*?(\|\g'parameters')?)??\])|(?'atom'[a-z][a-zA-Z0-9_]*)|(?'variable'[A-Z][a-zA-Z0-9_]*)|(?'compound'\g'atom'\(\g'parameters'(,\g'parameters')*?\)))(,\g'parameters')*)\))[\s^\n]*(:-)</string>
+			<string>(?&lt;=\))\s*(:-)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.function.head.prolog</string>
+					<string>keyword.control.bodybegin</string>
 				</dict>
 			</dict>
 			<key>end</key>
@@ -32,11 +34,11 @@
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>keyword.control.clauseend.prolog</string>
+					<string>keyword.control.bodyend.prolog</string>
 				</dict>
 			</dict>
 			<key>name</key>
-			<string>meta.clause.prolog</string>
+			<string>meta.clause.body.prolog</string>
 			<key>patterns</key>
 			<array>
 				<dict>
@@ -48,6 +50,14 @@
 					<string>#controlandkeywords</string>
 				</dict>
 				<dict>
+					<key>include</key>
+					<string>#atom</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#variable</string>
+				</dict>
+				<dict>
 					<key>match</key>
 					<string>.</string>
 					<key>name</key>
@@ -56,14 +66,75 @@
 			</array>
 		</dict>
 		<dict>
+			<key>begin</key>
+			<string>^\s*([a-zA-Z][a-zA-Z0-9_]*\()(?=.*:-.*)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.function.headbegin.prolog</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>(\))(?=\s*:-)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.function.headend.prolog</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>meta.clause.head.prolog</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#atom</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#variable</string>
+				</dict>
+			</array>
+		</dict>
+		<dict>
+			<key>comment</key>
+			<string>TODO match newlines</string>
 			<key>match</key>
-			<string>\s*[a-zA-Z][a-zA-Z0-9_]*\(.*?\)[\s^\n]*\.</string>
+			<string>\s*[a-zA-Z][a-zA-Z0-9_]*\([^\.]*\)[\s^\n]*\.</string>
 			<key>name</key>
 			<string>entity.name.function.fact.prolog</string>
 		</dict>
 	</array>
 	<key>repository</key>
 	<dict>
+		<key>atom</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>(?&lt;![a-zA-Z0-9_])[a-z][a-zA-Z0-9_]*(?!\s*\(|[a-zA-Z0-9_])</string>
+					<key>name</key>
+					<string>constant.other.atom.simple.prolog</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>'.*?'</string>
+					<key>name</key>
+					<string>constant.other.atom.quoted.prolog</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>\[\]</string>
+					<key>name</key>
+					<string>constant.other.atom.emptylist.prolog</string>
+				</dict>
+			</array>
+		</dict>
 		<key>comments</key>
 		<dict>
 			<key>patterns</key>
@@ -110,6 +181,18 @@
 							<string>$self</string>
 						</dict>
 						<dict>
+							<key>include</key>
+							<string>#comments</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#atom</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#variable</string>
+						</dict>
+						<dict>
 							<key>match</key>
 							<string>.</string>
 							<key>name</key>
@@ -125,7 +208,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(\s(is)\s)|((?&lt;!\w)_)|=:=|==|=|\\\+|&gt;|&lt;|\+|\*|\-</string>
+					<string>(\s(is)\s)|=:=|==|=|\\\+|&gt;|&lt;|\+|\*|\-</string>
 					<key>name</key>
 					<string>keyword.operator.prolog</string>
 				</dict>
@@ -136,12 +219,28 @@
 					<string>constant.numeric.integer.prolog</string>
 				</dict>
 				<dict>
-					<key>begin</key>
-					<string>"</string>
-					<key>end</key>
-					<string>"</string>
+					<key>match</key>
+					<string>".*?"</string>
 					<key>name</key>
 					<string>string.quoted.prolog</string>
+				</dict>
+			</array>
+		</dict>
+		<key>variable</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>(?&lt;![a-zA-Z0-9_])[A-Z][a-zA-Z0-9_]*</string>
+					<key>name</key>
+					<string>variable.parameter.uppercase.prolog</string>
+				</dict>
+				<dict>
+					<key>match</key>
+					<string>(?&lt;!\w)_</string>
+					<key>name</key>
+					<string>variable.language.anonymous.prolog</string>
 				</dict>
 			</array>
 		</dict>
