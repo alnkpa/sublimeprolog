@@ -7,9 +7,9 @@ Prolog. It is highly work in progress, so use with care.
 
 ### Installation via Sublime Package Control ###
 
-As soon as my pull request gets accepted, I recommend using the
-[Sublime Package Control] [1] to install this package. This way is much more
-convenient. It is named *Prolog syntax highlighting* there, as well.
+I recommend using the [Sublime Package Control] [1] to install this package. 
+This way is much more convenient. It is named *Prolog syntax highlighting* 
+there, as well.
 
 [1]: http://wbond.net/sublime_packages/package_control
 
