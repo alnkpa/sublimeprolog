@@ -7,6 +7,7 @@
 	<key>fileTypes</key>
 	<array>
 		<string>pl</string>
+		<string>pro</string>
 	</array>
 	<key>name</key>
 	<string>Prolog</string>
