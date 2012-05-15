@@ -7,34 +7,71 @@
   	{ "name": "meta.clause.body.prolog",
   	  "begin": "(?<=\\))\\s*(:-)",
       "beginCaptures": {
-          "1": { "name": "keyword.control.bodybegin" }
+          "1": { "name": "keyword.control.clause.bodybegin.prolog" }
       },
   	  "patterns": [
-      { "include": "#comments" },
-      { "include": "#controlandkeywords" },
-      { "include": "#atom" },
-      { "include": "#variable" },
-	  	{ "name": "meta.clause.body.prolog",
-	  	  "match": "."
-	  	}
+        { "include": "#comments" },
+        { "include": "#controlandkeywords" },
+        { "include": "#atom" },
+        { "include": "#variable" },
+        { "include": "#constants" },
+  	  	{ "name": "meta.clause.body.prolog",
+  	  	  "match": "."
+  	  	}
   	  ],
   	  "end": "[.^%]*(\\.)",
   	  "endCaptures": {
-        "1": { "name": "keyword.control.bodyend.prolog" }
+        "1": { "name": "keyword.control.clause.bodyend.prolog" }
   	  }
   	},
     { "name": "meta.clause.head.prolog",
       "begin": "^\\s*([a-zA-Z][a-zA-Z0-9_]*\\()(?=.*:-.*)",
       "beginCaptures": {
-          "1": { "name": "entity.name.function.headbegin.prolog" }
+          "1": { "name": "entity.name.function.clause.headbegin.prolog" }
       },
       "patterns": [
         { "include": "#atom" },
-        { "include": "#variable" }
+        { "include": "#variable" },
+        { "include": "#constants" }
       ],
       "end": "(\\))(?=\\s*:-)",
       "endCaptures": {
-          "1": { "name": "entity.name.function.headend.prolog" }
+          "1": { "name": "entity.name.function.clause.headend.prolog" }
+      }
+    },
+    { "name": "meta.dcg.head.prolog",
+      "begin": "^\\s*([a-z][a-zA-Z0-9_]*\\()(?=.*-->.*)",
+      "beginCaptures": {
+          "1": { "name": "entity.name.function.dcg.headbegin.prolog" }
+      },
+      "patterns": [
+        { "include": "#atom" },
+        { "include": "#variable" },
+        { "include": "#constants" }
+      ],
+      "end": "(\\))(?=\\s*-->)",
+      "endCaptures": {
+          "1": { "name": "entity.name.function.dcg.headend.prolog" }
+      }
+    },
+    { "name": "meta.dcg.body.prolog",
+      "begin": "(?<=\\))\\s*(-->)",
+      "beginCaptures": {
+          "1": { "name": "keyword.control.dcg.bodybegin.prolog" }
+      },
+      "patterns": [
+        { "include": "#comments" },
+        { "include": "#controlandkeywords" },
+        { "include": "#atom" },
+        { "include": "#variable" },
+        { "include": "#constants" },
+        {  "name": "meta.dcg.body.prolog",
+           "match": "."
+        }
+      ],
+      "end": "[.^%]*(\\.)",
+      "endCaptures": {
+          "1": { "name": "keyword.control.dcg.bodyend.prolog" }
       }
     },
   	{  "name": "entity.name.function.fact.prolog",
@@ -76,7 +113,11 @@
         },
         {  "name": "keyword.operator.prolog",
            "match": "(\\s(is)\\s)|=:=|==|=|\\\\\\+|>|<|\\+|\\*|\\-"
-        },
+        }
+      ]
+    },
+    "constants": {
+      "patterns": [
         {  "name": "constant.numeric.integer.prolog",
            "match": "(?<![a-zA-Z]|/)\\d+"
         },
