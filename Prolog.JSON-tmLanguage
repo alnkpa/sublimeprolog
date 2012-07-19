@@ -3,7 +3,7 @@
   "fileTypes": ["pl","pro"],
   "comment": "This Source Code Form is subject to the terms of the Mozilla Public License, v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain one at http://mozilla.org/MPL/2.0/.",
   "patterns": [
-  	{ "include": "#comments" },
+    { "include": "#comments" },
   	{ "name": "meta.clause.body.prolog",
   	  "begin": "(?<=\\))\\s*(:-)",
       "beginCaptures": {
@@ -11,6 +11,7 @@
       },
   	  "patterns": [
         { "include": "#comments" },
+        { "include": "#builtin" },
         { "include": "#controlandkeywords" },
         { "include": "#atom" },
         { "include": "#variable" },
@@ -81,9 +82,9 @@
   ],
   "repository": {
     "comments": {
-    "patterns": [
-      { "name": "comment.line.percent-sign.prolog",
-        "match": "%.*"
+      "patterns": [
+        { "name": "comment.line.percent-sign.prolog",
+          "match": "%.*"
     }
     ]
     },
@@ -96,6 +97,7 @@
         },
         "patterns": [
           { "include": "$self" },
+          { "include": "#builtin" },
           { "include": "#comments" },
           { "include": "#atom" },
           { "include": "#variable" },
@@ -116,12 +118,19 @@
         }
       ]
     },
+    "builtin": {
+      "patterns": [
+          { "name": "keyword.other",
+            "match": "\\b(op|findall|write|nl|test)\\b"
+          }
+       ]
+    },
     "constants": {
       "patterns": [
         {  "name": "constant.numeric.integer.prolog",
            "match": "(?<![a-zA-Z]|/)\\d+"
         },
-        { "name": "string.quoted.prolog",
+        { "name": "string.quoted.double.prolog",
           "match": "\".*?\""
         }
       ]

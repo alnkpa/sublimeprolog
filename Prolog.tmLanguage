@@ -48,6 +48,10 @@
 				</dict>
 				<dict>
 					<key>include</key>
+					<string>#builtin</string>
+				</dict>
+				<dict>
+					<key>include</key>
 					<string>#controlandkeywords</string>
 				</dict>
 				<dict>
@@ -236,6 +240,18 @@
 				</dict>
 			</array>
 		</dict>
+		<key>builtin</key>
+		<dict>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>match</key>
+					<string>\b(op|findall|write|nl|test)\b</string>
+					<key>name</key>
+					<string>keyword.other</string>
+				</dict>
+			</array>
+		</dict>
 		<key>comments</key>
 		<dict>
 			<key>patterns</key>
@@ -262,7 +278,7 @@
 					<key>match</key>
 					<string>".*?"</string>
 					<key>name</key>
-					<string>string.quoted.prolog</string>
+					<string>string.quoted.double.prolog</string>
 				</dict>
 			</array>
 		</dict>
@@ -298,6 +314,10 @@
 						<dict>
 							<key>include</key>
 							<string>$self</string>
+						</dict>
+						<dict>
+							<key>include</key>
+							<string>#builtin</string>
 						</dict>
 						<dict>
 							<key>include</key>
