@@ -1,0 +1,6 @@
+{
+	"cmd": ["swipl", "-f", "$file_name", "-t", "main", "--quiet"],
+	"working_dir": "$file_path",
+	"file_regex": "^Warning: (.+):([0-9]+)",
+	"selector": "source.prolog"
+}
