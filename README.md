@@ -1,7 +1,13 @@
 # Prolog syntax highlighting for Sublime Text 2 #
 
-This package provides syntax highlighting for the logic programming language
-Prolog. It is highly work in progress, so use with care.
+This package provides syntax highlighting and automated build for the logic
+programming language Prolog. It is highly work in progress, so use with care.
+
+## Auto Build System ##
+To be able to use the `Ctrl+B` automatic build, you need to define `main/0`
+where you compute the solution and you also print it. For example:
+
+    main :- compute(input, Solution), writef('%t\n', [Solution]).
 
 ## Installation ##
 
