@@ -8,6 +8,12 @@ To be able to use the `Ctrl+B` automatic build, you need to define `main/0`
 where you compute the solution and you also print it. For example:
 
     main :- compute(input, Solution), writef('%t\n', [Solution]).
+    
+An indicator that this is not done (correctly) is the following error:
+
+    ERROR: call/2: Undefined procedure: main/1
+    ERROR:   However, there are definitions for:
+    ERROR:         main/0
 
 ## Installation ##
 
