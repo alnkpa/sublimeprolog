@@ -85,7 +85,16 @@
       "patterns": [
         { "name": "comment.line.percent-sign.prolog",
           "match": "%.*"
-    }
+        },
+        { "name": "comment.block.prolog",
+          "begin": "/\\*",
+          "captures": {
+            "0": {
+              "name": "punctuation.definition.comment.prolog"
+            }
+          },
+          "end": "\\*/"
+        }
     ]
     },
     "controlandkeywords": {
