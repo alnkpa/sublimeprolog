@@ -19,15 +19,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;=\))\s*(:-)</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.control.clause.bodybegin.prolog</string>
-				</dict>
-			</dict>
+			<string>(?&lt;=:-)\s*</string>
 			<key>end</key>
 			<string>[.^%]*(\.)</string>
 			<key>endCaptures</key>
@@ -76,7 +68,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>^\s*([a-zA-Z][a-zA-Z0-9_]*\()(?=.*:-.*)</string>
+			<string>^\s*([a-z][a-zA-Z0-9_]*\(?)(?=.*:-.*)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -86,13 +78,18 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>(\))(?=\s*:-)</string>
+			<string>((\)?))\s*(:-)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
 					<string>entity.name.function.clause.headend.prolog</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.clause.bodybegin.prolog</string>
 				</dict>
 			</dict>
 			<key>name</key>
@@ -115,7 +112,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>^\s*([a-z][a-zA-Z0-9_]*\()(?=.*--&gt;.*)</string>
+			<string>^\s*([a-z][a-zA-Z0-9_]*\(?)(?=.*--&gt;.*)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
@@ -125,13 +122,18 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>(\))(?=\s*--&gt;)</string>
+			<string>((\)?))\s*(--&gt;)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
 					<string>entity.name.function.dcg.headend.prolog</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.dcg.bodybegin.prolog</string>
 				</dict>
 			</dict>
 			<key>name</key>
@@ -154,15 +156,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;=\))\s*(--&gt;)</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.control.dcg.bodybegin.prolog</string>
-				</dict>
-			</dict>
+			<string>(?&lt;=--&gt;)\s*</string>
 			<key>end</key>
 			<string>[.^%]*(\.)</string>
 			<key>endCaptures</key>
@@ -204,14 +198,6 @@
 					<string>meta.dcg.body.prolog</string>
 				</dict>
 			</array>
-		</dict>
-		<dict>
-			<key>comment</key>
-			<string>TODO match newlines</string>
-			<key>match</key>
-			<string>\s*[a-zA-Z][a-zA-Z0-9_]*\([^\.]*\)[\s^\n]*\.</string>
-			<key>name</key>
-			<string>entity.name.function.fact.prolog</string>
 		</dict>
 	</array>
 	<key>repository</key>
