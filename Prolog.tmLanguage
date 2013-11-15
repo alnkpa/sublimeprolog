@@ -211,7 +211,7 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>((\)?))\s*(\.)</string>
+			<string>((\)?))\s*(\.)(?!\d+)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
@@ -316,7 +316,7 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>(?&lt;![a-zA-Z]|/)\d+</string>
+					<string>(?&lt;![a-zA-Z]|/)(\d+|(\d+\.\d+))</string>
 					<key>name</key>
 					<string>constant.numeric.integer.prolog</string>
 				</dict>
