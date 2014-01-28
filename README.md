@@ -1,4 +1,4 @@
-# Prolog syntax highlighting for Sublime Text 2 #
+# Prolog syntax highlighting for Sublime Text 2 & 3 #
 
 This package provides syntax highlighting and automated build for the logic
 programming language Prolog. It is highly work in progress, so use with care.

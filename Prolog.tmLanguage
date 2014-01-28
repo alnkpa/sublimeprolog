@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
 	<key>comment</key>
@@ -20,15 +20,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;=\))\s*(:-)</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.control.clause.bodybegin.prolog</string>
-				</dict>
-			</dict>
+			<string>(?&lt;=:-)\s*</string>
 			<key>end</key>
 			<string>[.^%]*(\.)</string>
 			<key>endCaptures</key>
@@ -77,23 +69,33 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>^\s*([a-zA-Z][a-zA-Z0-9_]*\()(?=.*:-.*)</string>
+			<string>^\s*([a-z][a-zA-Z0-9_]*)(\(?)(?=.*:-.*)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.function.clause.headbegin.prolog</string>
+					<string>entity.name.function.clause.prolog</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.parameters.begin</string>
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>(\))(?=\s*:-)</string>
+			<string>((\)?))\s*(:-)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.function.clause.headend.prolog</string>
+					<string>punctuation.definition.parameters.end</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.clause.bodybegin.prolog</string>
 				</dict>
 			</dict>
 			<key>name</key>
@@ -116,23 +118,33 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>^\s*([a-z][a-zA-Z0-9_]*\()(?=.*--&gt;.*)</string>
+			<string>^\s*([a-z][a-zA-Z0-9_]*)(\(?)(?=.*--&gt;.*)</string>
 			<key>beginCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.function.dcg.headbegin.prolog</string>
+					<string>entity.name.function.dcg.prolog</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.parameters.begin</string>
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>(\))(?=\s*--&gt;)</string>
+			<string>((\)?))\s*(--&gt;)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
 				<dict>
 					<key>name</key>
-					<string>entity.name.function.dcg.headend.prolog</string>
+					<string>punctuation.definition.parameters.end</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.dcg.bodybegin.prolog</string>
 				</dict>
 			</dict>
 			<key>name</key>
@@ -155,15 +167,7 @@
 		</dict>
 		<dict>
 			<key>begin</key>
-			<string>(?&lt;=\))\s*(--&gt;)</string>
-			<key>beginCaptures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>keyword.control.dcg.bodybegin.prolog</string>
-				</dict>
-			</dict>
+			<string>(?&lt;=--&gt;)\s*</string>
 			<key>end</key>
 			<string>[.^%]*(\.)</string>
 			<key>endCaptures</key>
@@ -207,12 +211,53 @@
 			</array>
 		</dict>
 		<dict>
-			<key>comment</key>
-			<string>TODO match newlines</string>
-			<key>match</key>
-			<string>\s*[a-zA-Z][a-zA-Z0-9_]*\([^\.]*\)[\s^\n]*\.</string>
+			<key>begin</key>
+			<string>^\s*([a-zA-Z][a-zA-Z0-9_]*)(\(?)(?!.*(:-|--&gt;).*)</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>entity.name.function.fact.prolog</string>
+				</dict>
+				<key>2</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.parameters.begin</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>((\)?))\s*(\.)(?!\d+)</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>1</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.parameters.end</string>
+				</dict>
+				<key>3</key>
+				<dict>
+					<key>name</key>
+					<string>keyword.control.fact.end.prolog</string>
+				</dict>
+			</dict>
 			<key>name</key>
-			<string>entity.name.function.fact.prolog</string>
+			<string>meta.fact.prolog</string>
+			<key>patterns</key>
+			<array>
+				<dict>
+					<key>include</key>
+					<string>#atom</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#variable</string>
+				</dict>
+				<dict>
+					<key>include</key>
+					<string>#constants</string>
+				</dict>
+			</array>
 		</dict>
 	</array>
 	<key>repository</key>
@@ -287,7 +332,7 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>(?&lt;![a-zA-Z]|/)\d+</string>
+					<string>(?&lt;![a-zA-Z]|/)(\d+|(\d+\.\d+))</string>
 					<key>name</key>
 					<string>constant.numeric.integer.prolog</string>
 				</dict>
