@@ -8,10 +8,9 @@
 	<array>
 		<string>pl</string>
 		<string>pro</string>
-		<string>ecl</string>
 	</array>
 	<key>name</key>
-	<string>Prolog</string>
+	<string>SWI-Prolog</string>
 	<key>patterns</key>
 	<array>
 		<dict>
