@@ -21,7 +21,7 @@
 			<key>begin</key>
 			<string>(?&lt;=:-)\s*</string>
 			<key>end</key>
-			<string>[.^%]*(\.)</string>
+			<string>(\.)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
@@ -168,7 +168,7 @@
 			<key>begin</key>
 			<string>(?&lt;=--&gt;)\s*</string>
 			<key>end</key>
-			<string>[.^%]*(\.)</string>
+			<string>(\.)</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>1</key>
