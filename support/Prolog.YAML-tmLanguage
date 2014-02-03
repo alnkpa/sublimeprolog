@@ -12,7 +12,7 @@ patterns:
 
 - name: meta.clause.body.prolog
   begin: (?<=:-)\s*
-  end: '[.^%]*(\.)'
+  end: '(\.)'
   endCaptures:
     '1': {name: keyword.control.clause.bodyend.prolog}
   patterns:
@@ -55,7 +55,7 @@ patterns:
 
 - name: meta.dcg.body.prolog
   begin: (?<=-->)\s*
-  end: '[.^%]*(\.)'
+  end: '(\.)'
   endCaptures:
     '1': {name: keyword.control.dcg.bodyend.prolog}
   patterns:
