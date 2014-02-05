@@ -133,7 +133,7 @@ repository:
     - name: keyword.control.cut.prolog
       match: '!'
     - name: keyword.operator.prolog
-      match: (\s(is)\s)|=:=|==|=|\\\+|>|<|\+|\*|\-
+      match: (\s(is)\s)|=:=|=?\\?=|\\\+|@?>|@?=?<|\+|\*|\-
 
   variable:
     patterns:

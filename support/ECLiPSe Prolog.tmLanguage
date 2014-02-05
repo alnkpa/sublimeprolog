@@ -270,7 +270,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(\s(is)\s)|=:=|==|=|\\\+|&gt;|&lt;|\+|\*|\-</string>
+					<string>(\s(is)\s)|=:=|=?\\?=|\\\+|@?&gt;|@?=?&lt;|\+|\*|\-</string>
 					<key>name</key>
 					<string>keyword.operator.prolog</string>
 				</dict>
