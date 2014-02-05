@@ -1,0 +1,108 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+comment: This Source Code Form is subject to the terms of the Mozilla Public License,
+  v. 2.0. If a copy of the MPL was not distributed with this file, You can obtain
+  one at http://mozilla.org/MPL/2.0/.
+name: ECLiPSe Prolog
+scopeName: source.prolog.eclipse
+fileTypes: [ecl]
+uuid: a933e734-8345-407e-90af-9f7647f5ebf8
+
+patterns:
+- include: '#comments'
+
+- name: meta.clause.body.prolog
+  begin: (?<=:-)\s*
+  end: '(\.)[^(\.\.)]'
+  endCaptures:
+    '1': {name: keyword.control.clause.bodyend.prolog}
+  patterns:
+  - include: '#comments'
+  - include: '#builtin'
+  - include: '#controlandkeywords'
+  - include: '#atom'
+  - include: '#variable'
+  - include: '#constants'
+  - name: meta.clause.body.prolog
+    match: .
+
+- name: meta.dcg.body.prolog
+  begin: (?<=-->)\s*
+  end: '(\.)[^(\.\.)]'
+  endCaptures:
+    '1': {name: keyword.control.dcg.bodyend.prolog}
+  patterns:
+  - include: '#comments'
+  - include: '#controlandkeywords'
+  - include: '#atom'
+  - include: '#variable'
+  - include: '#constants'
+  - name: meta.dcg.body.prolog
+    match: .
+
+- include: 'source.prolog'
+
+
+repository:
+  atom:
+    patterns:
+    - name: constant.other.atom.simple.prolog
+      match: (?<![a-zA-Z0-9_])[a-z][a-zA-Z0-9_]*(?!\s*\(|[a-zA-Z0-9_])
+    - name: constant.other.atom.quoted.prolog
+      match: "'.*?'"
+    - name: constant.other.atom.emptylist.prolog
+      match: \[\]
+
+  builtin:
+    patterns:
+    - name: keyword.other.prolog
+      match: \b(op|findall|write|nl|test)\b
+    - name: keyword.other.prolog.eclipse
+      match: \b(foreach|fromto|do|labeling|ic\:|indomain)\b
+
+  comments:
+    patterns:
+    - name: comment.line.percent-sign.prolog
+      match: '%.*'
+    - name: comment.block.prolog
+      begin: /\*
+      end: \*/
+      captures:
+        '0': {name: punctuation.definition.comment.prolog}
+
+  constants:
+    patterns:
+    - name: constant.numeric.integer.prolog
+      match: (?<![a-zA-Z]|/)(\d+|(\d+\.\d+))
+    - name: string.quoted.double.prolog
+      match: '".*?"'
+
+  controlandkeywords:
+    patterns:
+    - name: meta.if.prolog
+      begin: (->)
+      beginCaptures:
+        '1': {name: keyword.control.if.prolog}
+      end: (;)
+      endCaptures:
+        '1': {name: keyword.control.else.prolog}
+      patterns:
+      - include: $self
+      - include: '#builtin'
+      - include: '#comments'
+      - include: '#atom'
+      - include: '#variable'
+      - name: meta.if.body.prolog
+        match: .
+    - name: keyword.control.cut.prolog
+      match: '!'
+    - name: keyword.operator.prolog
+      match: (\s(is)\s)|=:=|==|=|\\\+|>|<|\+|\*|\-
+    - name: keyword.operator.prolog.eclipse
+      match: (#|&|\$)(<|>|=)|(#|&|\$)?(::)|\.\.|or|and|neg
+
+  variable:
+    patterns:
+    - name: variable.parameter.uppercase.prolog
+      match: (?<![a-zA-Z0-9_])[A-Z][a-zA-Z0-9_]*
+    - name: variable.language.anonymous.prolog
+      match: (?<!\w)_
