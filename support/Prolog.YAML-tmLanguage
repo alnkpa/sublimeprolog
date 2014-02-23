@@ -94,7 +94,7 @@ repository:
   builtin:
     patterns:
     - name: keyword.other
-      match: \b(op|findall|write|nl|test)\b
+      match: \b(op|findall|write|nl|writeln|fail|use_module|module)\b
 
   comments:
     patterns:

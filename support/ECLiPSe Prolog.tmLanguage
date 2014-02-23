@@ -147,13 +147,13 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>\b(op|findall|write|nl|test)\b</string>
+					<string>\b(op|findall|write|nl|writeln|fail|lib)\b</string>
 					<key>name</key>
 					<string>keyword.other.prolog</string>
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>\b(foreach|fromto|do|labeling|ic\:|indomain)\b</string>
+					<string>\b(for(each(elem)?)?|fromto|do|param|dim)\b</string>
 					<key>name</key>
 					<string>keyword.other.prolog.eclipse</string>
 				</dict>
@@ -276,7 +276,7 @@
 				</dict>
 				<dict>
 					<key>match</key>
-					<string>(#|&amp;|\$)(&lt;|&gt;|=)|(#|&amp;|\$)?(::)|\.\.|or|and|neg</string>
+					<string>(#|&amp;|\$)(&lt;|&gt;|=)|(#|&amp;|\$)?(::)|\.\.|or|and|(#|&amp;|\$)\\=</string>
 					<key>name</key>
 					<string>keyword.operator.prolog.eclipse</string>
 				</dict>
