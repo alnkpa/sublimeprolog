@@ -55,9 +55,9 @@ repository:
   builtin:
     patterns:
     - name: keyword.other.prolog
-      match: \b(op|findall|write|nl|test)\b
+      match: \b(op|findall|write|nl|writeln|fail|lib)\b
     - name: keyword.other.prolog.eclipse
-      match: \b(foreach|fromto|do|labeling|ic\:|indomain)\b
+      match: \b(for(each(elem)?)?|fromto|do|param|dim)\b
 
   comments:
     patterns:
@@ -98,7 +98,7 @@ repository:
     - name: keyword.operator.prolog
       match: (\s(is)\s)|=:=|=?\\?=|\\\+|@?>|@?=?<|\+|\*|\-
     - name: keyword.operator.prolog.eclipse
-      match: (#|&|\$)(<|>|=)|(#|&|\$)?(::)|\.\.|or|and|neg
+      match: (#|&|\$)(<|>|=)|(#|&|\$)?(::)|\.\.|or|and|(#|&|\$)\\=
 
   variable:
     patterns:

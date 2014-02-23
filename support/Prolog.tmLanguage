@@ -291,7 +291,7 @@
 			<array>
 				<dict>
 					<key>match</key>
-					<string>\b(op|findall|write|nl|test)\b</string>
+					<string>\b(op|findall|write|nl|writeln|fail|lib)\b</string>
 					<key>name</key>
 					<string>keyword.other</string>
 				</dict>
