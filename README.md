@@ -7,13 +7,17 @@ programming language Prolog. It is highly work in progress, so use with care.
 To be able to use the `Ctrl+B` automatic build, you need to define `main/0`
 where you compute the solution and you also print it. For example:
 
-    main :- compute(input, Solution), writef('%t\n', [Solution]).
-    
+```prolog
+main :- compute(input, Solution), writef('%t\n', [Solution]).
+```
+
 An indicator that this is not done (correctly) is the following error:
 
-    ERROR: call/2: Undefined procedure: main/1
-    ERROR:   However, there are definitions for:
-    ERROR:         main/0
+```
+ERROR: call/2: Undefined procedure: main/1
+ERROR:   However, there are definitions for:
+ERROR:         main/0
+```
 
 ## Installation ##
 
@@ -29,11 +33,13 @@ there, as well.
 
 If you want to manually install this package, please do:
 
-	cd /tmp
-	wget -O sublimeprolog.tar.gz http://github.com/alnkpa/sublimeprolog/tarball/master
-	tar -xzvf sublimeprolog.tar.gz
-	cd alnkpa-sublimeprolog-<commit>
-	mv Prolog.tmLanguage ~/.config/sublime-text-2/Packages/User/
+```sh
+cd /tmp
+wget -O sublimeprolog.tar.gz http://github.com/alnkpa/sublimeprolog/tarball/master
+tar -xzvf sublimeprolog.tar.gz
+cd alnkpa-sublimeprolog-<commit>
+mv Prolog.tmLanguage ~/.config/sublime-text-2/Packages/User/
+```
 
 ## License ##
 
