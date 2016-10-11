@@ -4,7 +4,7 @@ This package provides syntax highlighting and automated build for the logic
 programming language Prolog. It is highly work in progress, so use with care.
 
 ## Auto Build System ##
-To be able to use the `Ctrl+B` automatic build, you need to define `main/0`
+To be able to use the <kbd>Ctrl</kbd>+<kbd>B</kbd> automatic build, you need to define `main/0`
 where you compute the solution and you also print it. For example:
 
 ```prolog
