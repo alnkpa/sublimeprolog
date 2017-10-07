@@ -24,8 +24,7 @@ ERROR:         main/0
 ### Installation via Sublime Package Control ###
 
 I recommend using the [Sublime Package Control] [1] to install this package. 
-This way is much more convenient. It is named *Prolog syntax highlighting* 
-there, as well.
+This way is much more convenient. It is named *Prolog*.
 
 [1]: http://wbond.net/sublime_packages/package_control
 
