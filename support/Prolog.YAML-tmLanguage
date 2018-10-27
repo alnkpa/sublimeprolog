@@ -4,7 +4,7 @@ comment: This Source Code Form is subject to the terms of the Mozilla Public Lic
   one at http://mozilla.org/MPL/2.0/.
 name: SWI-Prolog
 scopeName: source.prolog
-fileTypes: [pl, pro]
+fileTypes: [pl, pro, prolog, swiplrc]
 uuid: df89928b-6612-475a-b414-f319d9b98664
 
 patterns:
@@ -138,6 +138,6 @@ repository:
   variable:
     patterns:
     - name: variable.parameter.uppercase.prolog
-      match: (?<![a-zA-Z0-9_])[A-Z][a-zA-Z0-9_]*
+      match: (?<![a-zA-Z0-9_])[_A-Z][a-zA-Z0-9_]*
     - name: variable.language.anonymous.prolog
       match: (?<!\w)_
