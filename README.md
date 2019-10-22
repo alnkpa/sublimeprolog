@@ -1,5 +1,7 @@
 # Prolog syntax highlighting for Sublime Text 2 & 3 #
 
+[![No Maintenance Intended](http://unmaintained.tech/badge.svg)](http://unmaintained.tech/)
+
 This package provides syntax highlighting and automated build for the logic
 programming language Prolog. It is highly work in progress, so use with care.
 
@@ -23,10 +25,8 @@ ERROR:         main/0
 
 ### Installation via Sublime Package Control ###
 
-I recommend using the [Sublime Package Control] [1] to install this package. 
+I recommend using the [Sublime Package Control](http://wbond.net/sublime_packages/package_control) to install this package. 
 This way is much more convenient. It is named *Prolog*.
-
-[1]: http://wbond.net/sublime_packages/package_control
 
 ### Manual installation ###
 
